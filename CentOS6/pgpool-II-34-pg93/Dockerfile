@@ -26,7 +26,7 @@ RUN rpm -ivh /tmp/${EXTENSION_RPM}
 
 # Install necessary buid tools and regression test tools
 RUN yum install -y gcc bison flex make autoconf automake git file openssl-devel
-RUN yum install -y ed which openssh-server openssh-clients
+RUN yum install -y ed which openssh-server openssh-clients tar
 RUN yum install -y $JDK
 
 # Clone pgpool-II source

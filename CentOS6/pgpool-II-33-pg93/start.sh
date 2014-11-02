@@ -6,6 +6,8 @@ sysctl -w kernel.shmmax=1063256064
 sysctl -w kernel.shmall=259584
 ipcs -l
 service sshd start
+if [ ! -d /var/volum/$PGPOOL_BRANCH ];then
+    mkdir /var/volum/$PGPOOL_BRANCH
+fi
+chown -R postgres /var/volum/$PGPOOL_BRANCH
 su postgres < /tmp/regress.sh
-mkdir /var/volum/$PGPOOL_BRANCH
-cp -rp $PGHOME/pgpool2/test/regression /var/volum/$PGPOOL_BRANCH
