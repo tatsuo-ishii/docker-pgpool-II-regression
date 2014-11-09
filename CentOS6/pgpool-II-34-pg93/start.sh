@@ -9,5 +9,6 @@ service sshd start
 if [ ! -d /var/volum/$PGPOOL_BRANCH ];then
     mkdir /var/volum/$PGPOOL_BRANCH
 fi
+service memcached start
 chown -R postgres /var/volum/$PGPOOL_BRANCH
 su postgres < /tmp/regress.sh

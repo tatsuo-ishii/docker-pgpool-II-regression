@@ -4,11 +4,11 @@ FROM centos:centos6
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_BRANCH master
+ENV PGPOOL_BRANCH V3_4_STABLE
 ENV PGHOME /var/lib/pgsql
 ENV POSTGRESQL_VERSION 9.3
 ENV POSTGRESQL_VERSION2 93
-ENV EXTENSION_RPM pgpool-II-pg93-extensions-3.4rc2-1.pgdg.x86_64.rpm
+ENV EXTENSION_RPM pgpool-II-pg93-extensions-3.4.0-1.pgdg.x86_64.rpm
 ENV JDK java-1.8.0-openjdk-devel.x86_64
 ENV JDBC_DRIVER postgresql-9.3-1102.jdbc41.jar
 
@@ -28,6 +28,7 @@ RUN rpm -ivh /tmp/${EXTENSION_RPM}
 RUN yum install -y gcc bison flex make autoconf automake git file openssl-devel
 RUN yum install -y ed which openssh-server openssh-clients tar
 RUN yum install -y $JDK
+RUN yum install -y memcached libmemcached-devel
 
 # Clone pgpool-II source
 RUN su -c 'cd $PGHOME && git clone http://git.postgresql.org/git/pgpool2.git' postgres
