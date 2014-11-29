@@ -9,9 +9,5 @@ service sshd start
 if [ ! -d /var/volum/$PGPOOL_BRANCH ];then
     mkdir /var/volum/$PGPOOL_BRANCH
 fi
-service memcached start
 chown -R postgres /var/volum/$PGPOOL_BRANCH
-export PGBIN=/usr/pgsql-${POSTGRESQL_VERSION}/bin
-export PGPOOL_INSTALL_DIR=/usr
-export PGPOOLDIR=/etc/pgpool-II
-su postgres
+su postgres < /tmp/regress.sh
